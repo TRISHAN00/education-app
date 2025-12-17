@@ -1,46 +1,58 @@
-import mongoose, { Schema } from "mongoose";
-const courseSchema = new Schema({
-  title: {
-    required: true,
-    type: String,
-  },
-  description: {
-    required: true,
-    type: String,
-  },
-  thumbnail: {
-    required: true,
-    type: String,
-  },
-  modules: {
-    required: false,
-    type: Array,
-  },
-  price: {
-    required: true,
-    type: Number,
-  },
-  active: {
-    required: true,
-    type: Boolean,
-  },
-  category: {
-    required: true,
-    type: Schema.ObjectId,
-  },
-  instructor: {
-    required: false,
-    type: Schema.ObjectId,
-  },
-  testimonials: {
-    required: false,
-    type: Array,
-  },
-  quizSet: {
-    required: false,
-    type: Schema.ObjectId,
-  },
-});
+import mongoose from "mongoose";
 
-export const Course =
-  mongoose.model.course ?? mongoose.model("Course", courseSchema);
+const { Schema } = mongoose;
+
+const courseSchema = new Schema(
+  {
+    title: {
+      type: String,
+      required: true,
+    },
+    description: {
+      type: String,
+      required: true,
+    },
+    thumbnail: {
+      type: String,
+      required: true,
+    },
+    modules: {
+      type: [Schema.Types.Mixed], // better than plain Array
+      required: false,
+    },
+    price: {
+      type: Number,
+      required: true,
+    },
+    active: {
+      type: Boolean,
+      required: true,
+    },
+    category: {
+      type: Schema.Types.ObjectId,
+      ref: "Category",
+      required: true,
+    },
+    instructor: {
+      type: Schema.Types.ObjectId,
+      ref: "User", // optional
+      required: false,
+    },
+    testimonials: {
+      type: [Schema.Types.Mixed],
+      required: false,
+    },
+    quizSet: {
+      type: Schema.Types.ObjectId,
+      ref: "Quiz",
+      required: false,
+    },
+  },
+  { timestamps: true }
+);
+
+// ✅ THIS is the fix
+const Course =
+  mongoose.models.Course || mongoose.model("Course", courseSchema);
+
+export default Course;
