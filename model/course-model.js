@@ -35,11 +35,10 @@ const courseSchema = new Schema(
     },
     instructor: {
       type: Schema.Types.ObjectId,
-      ref: "User", // optional
-      required: false,
+      ref: "User", 
     },
     testimonials: {
-      type: [Schema.Types.Mixed],
+      type: [Schema.Types.ObjectId],
       required: false,
     },
     quizSet: {
