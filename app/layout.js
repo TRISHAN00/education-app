@@ -1,4 +1,3 @@
-import { Toaster } from "@/components/ui/sonner";
 import { cn } from "@/lib/utils";
 import { dbConnection } from "@/services/mongo";
 import { Inter } from "next/font/google";
@@ -19,7 +18,6 @@ export default async function RootLayout({ children }) {
       <body
         className={cn(inter.className, poppins.className)}>
           {children}
-          <Toaster richColors position="top-center"/>
       </body>
     </html>
   );
