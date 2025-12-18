@@ -2,101 +2,16 @@ import { SectionTitle } from "@/components/section-title";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { formatPrice } from "@/lib/formatPrice";
 import { cn } from "@/lib/utils";
+import { getCategories } from "@/queries/category";
 import { ArrowRight, ArrowRightIcon, BookOpen } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { getCourses } from "../../queries/course";
 
-const categories = [
-  {
-    id: 1,
-    title: "Design",
-    thumbnail: "/assets/images/categories/design.jpg",
-  },
-
-  {
-    id: 3,
-    title: "Development",
-    thumbnail: "/assets/images/categories/development.jpg",
-  },
-  {
-    id: 4,
-    title: "Marketing",
-    thumbnail: "/assets/images/categories/marketing.jpg",
-  },
-  {
-    id: 5,
-    title: "IT & Software",
-    thumbnail: "/assets/images/categories/it_software.jpg",
-  },
-  {
-    id: 6,
-    title: "Personal Development",
-    thumbnail: "/assets/images/categories/personal_development.jpg",
-  },
-  {
-    id: 7,
-    title: "Business",
-    thumbnail: "/assets/images/categories/business.jpg",
-  },
-  {
-    id: 8,
-    title: "Photography",
-    thumbnail: "/assets/images/categories/photography.jpg",
-  },
-  {
-    id: 9,
-    title: "Music",
-    thumbnail: "/assets/images/categories/music.jpg",
-  },
-];
-
-const courses = [
-  {
-    id: 1,
-    title: "Design",
-    thumbnail: "/assets/images/categories/design.jpg",
-  },
-
-  {
-    id: 3,
-    title: "Development",
-    thumbnail: "/assets/images/categories/development.jpg",
-  },
-  {
-    id: 4,
-    title: "Marketing",
-    thumbnail: "/assets/images/categories/marketing.jpg",
-  },
-  {
-    id: 5,
-    title: "IT & Software",
-    thumbnail: "/assets/images/categories/it_software.jpg",
-  },
-  {
-    id: 6,
-    title: "Personal Development",
-    thumbnail: "/assets/images/categories/personal_development.jpg",
-  },
-  {
-    id: 7,
-    title: "Business",
-    thumbnail: "/assets/images/categories/business.jpg",
-  },
-  {
-    id: 8,
-    title: "Photography",
-    thumbnail: "/assets/images/categories/photography.jpg",
-  },
-  {
-    id: 9,
-    title: "Music",
-    thumbnail: "/assets/images/categories/music.jpg",
-  },
-];
 const HomePage = async () => {
   const courses = await getCourses();
-  console.log(courses)
+  const categories = await getCategories();
+  
   return (
     <>
       <section className="space-y-6 pb-8 pt-6 md:pb-12 md:pt-10 lg:py-32 grainy">
@@ -155,7 +70,7 @@ const HomePage = async () => {
           {categories.map((category) => {
             return (
               <Link
-                href=""
+                href="/"
                 key={category.id}
                 className="relative overflow-hidden rounded-lg border bg-background p-2 hover:scale-105 transition-all duration-500 ease-in-out"
               >
@@ -187,12 +102,13 @@ const HomePage = async () => {
         </div>
         <div className="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 gap-4">
           {courses.map((category) => {
+            console.log(category, 'category')
             return (
               <Link key={category.id} href={`/courses/${category.id}`}>
                 <div className="group hover:shadow-sm transition overflow-hidden border rounded-lg p-3 h-full">
                   <div className="relative w-full aspect-video rounded-md overflow-hidden">
                     <Image
-                      src="/assets/images/courses/course_1.png"
+                      src={category.thumbnail}
                       alt={"course"}
                       className="object-cover"
                       fill

@@ -5,7 +5,7 @@ import Testimonials from "@/model/testimonials-mode";
 import User from "@/model/user-model";
 
 async function getCourses() {
-  const courses = await Course.find()
+  const courses = await Course.find({active: true})
     .populate({
       path: "category",
       model: Category,
@@ -21,7 +21,7 @@ async function getCourses() {
     .populate({
       path: "testimonials",
       model: Testimonials,
-    });
+    }).lean();
   return courses;
 }
 
