@@ -13,7 +13,7 @@ import { ArrowRight, BookOpen } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function RelatedCourses() {
+export default function RelatedCourses({courses}) {
   return (
        <section className="">
         <div className="container">

@@ -1,3 +1,4 @@
+import { getCourseById } from "@/queries/course";
 import CourseDetails from "./_components/CourseDetails";
 import CourseDetailsIntro from "./_components/CourseDetailsIntro";
 import RelatedCourses from "./_components/RelatedCourses";
@@ -45,18 +46,19 @@ const courses = [
     thumbnail: "/assets/images/categories/music.jpg",
   },
 ];
-const SingleCoursePage = ({params: {id}}) => {
+const SingleCoursePage = async ({ params: { id } }) => {
+  const course = await getCourseById(id);
+  console.log(course, 'course details');
+
   return (
     <>
       <CourseDetailsIntro />
 
       <CourseDetails />
 
-      {/* Testimonials */}
-      <Testimonials />
+      <Testimonials courses={courses} />
 
-      {/* Related Course */}
-      <RelatedCourses />
+      <RelatedCourses courses={courses} />
     </>
   );
 };

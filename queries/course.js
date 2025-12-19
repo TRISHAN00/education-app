@@ -1,3 +1,4 @@
+import { replaceMongoIdInArray, replaceMongoIdInObject } from "@/lib/convertData";
 import Category from "@/model/category-mode";
 import Course from "@/model/course-model";
 import Module from "@/model/module-model";
@@ -22,8 +23,13 @@ async function getCourses() {
       path: "testimonials",
       model: Testimonials,
     }).lean();
-  return courses;
+  return replaceMongoIdInArray(courses);
 }
 
-export { getCourses };
+async function getCourseById(id) {
+  const course = await Course.findById(id).lean();
+  return replaceMongoIdInObject(course);
+}
+
+export { getCourseById, getCourses };
 

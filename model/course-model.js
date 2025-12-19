@@ -8,6 +8,10 @@ const courseSchema = new Schema(
       type: String,
       required: true,
     },
+    subtitle: {
+      type: String,
+      required: true,
+    },
     description: {
       type: String,
       required: true,
@@ -17,7 +21,7 @@ const courseSchema = new Schema(
       required: true,
     },
     modules: {
-      type: [Schema.Types.Mixed], // better than plain Array
+      type: [Schema.Types.Mixed],
       required: false,
     },
     price: {
@@ -35,7 +39,7 @@ const courseSchema = new Schema(
     },
     instructor: {
       type: Schema.Types.ObjectId,
-      ref: "User", 
+      ref: "User",
     },
     testimonials: {
       type: [Schema.Types.ObjectId],
@@ -46,12 +50,18 @@ const courseSchema = new Schema(
       ref: "Quiz",
       required: false,
     },
+    createdOn: {
+      type: Date,
+      required: true,
+    },
+    modifiedOn: {
+      type: Date,
+      required: true,
+    },
   },
   { timestamps: true }
 );
 
-// ✅ THIS is the fix
-const Course =
-  mongoose.models.Course || mongoose.model("Course", courseSchema);
+const Course = mongoose.models.Course || mongoose.model("Course", courseSchema);
 
 export default Course;

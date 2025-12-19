@@ -1,13 +1,15 @@
 import { SectionTitle } from "@/components/section-title";
 import {
-    Carousel,
-    CarouselContent,
-    CarouselItem,
-    CarouselNext,
-    CarouselPrevious,
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
 } from "@/components/ui/carousel";
 
-export default function Testimonials() {
+
+
+export default function Testimonials({courses}) {
   return (
     <section className="pb-8 md:pb-12 lg:pb-24">
            <div className="container">
