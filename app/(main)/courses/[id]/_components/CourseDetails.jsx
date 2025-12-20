@@ -1,13 +1,13 @@
 import {
-    Accordion,
-    AccordionContent,
-    AccordionItem,
-    AccordionTrigger,
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
 import { BookCheck, CheckCheck, Clock10, FileQuestion, MessageSquare, NotepadText, Presentation, Radio, Star, StickyNote, Tv, UsersRound, Video } from "lucide-react";
-export default function CourseDetails() {
+export default function CourseDetails({title, subtitle}) {
   return (
     
       <section className="py-8 md:py-12 lg:py-24">
@@ -16,10 +16,10 @@ export default function CourseDetails() {
             Development
           </span>
           <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold 2xl:text-5xl mt-3">
-            Reactive Accelerator
+            {title}
           </h3>
           <p className="mt-3 text-gray-600 text-sm">
-            Master React JS & Next JS
+            {subtitle}
           </p>
           {/*  */}
           <div className="flex sm:items-center gap-5 flex-col sm:flex-row sm:gap-6 md:gap-20 mt-6">
