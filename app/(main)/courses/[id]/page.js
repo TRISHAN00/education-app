@@ -48,13 +48,17 @@ const courses = [
 ];
 const SingleCoursePage = async ({ params: { id } }) => {
   const course = await getCourseById(id);
-  console.log(course, 'course details');
+  console.log(course, "course details");
 
   return (
     <>
-      <CourseDetailsIntro title={course.title} subtitle={course.subtitle} thumbnail={course.thumbnail} />
+      <CourseDetailsIntro
+        title={course.title}
+        subtitle={course.subtitle}
+        thumbnail={course.thumbnail}
+      />
 
-      <CourseDetails title={course.title} subtitle={course.subtitle} />
+      <CourseDetails course={course} />
 
       <Testimonials courses={courses} testimonials={course.testimonials} />
 

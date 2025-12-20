@@ -31,7 +31,6 @@ async function getCourses() {
 }
 
 async function getCourseById(id) {
-  // Use try-catch for better error handling in the async function
   try {
     const course = await Course.findById(id)
       .populate({

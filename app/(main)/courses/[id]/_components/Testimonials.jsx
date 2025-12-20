@@ -9,14 +9,13 @@ import {
 } from "@/components/ui/carousel";
 
 export default function Testimonials({ courses, testimonials }) {
-  console.log(testimonials);
   return (
     <section className="pb-8 md:pb-12 lg:pb-24">
       <div className="container">
         <SectionTitle className="mb-6">Testimonials</SectionTitle>
         <Carousel
           opts={{
-            align: "start",
+            align: "start", 
           }}
           className="max-2xl:w-[90%] w-full mx-auto"
         >
