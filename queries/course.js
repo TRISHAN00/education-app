@@ -2,7 +2,7 @@ import {
   replaceMongoIdInArray,
   replaceMongoIdInObject,
 } from "@/lib/convertData";
-import Category from "@/model/category-mode";
+import Category from "@/model/category-model";
 import Course from "@/model/course-model";
 import Module from "@/model/module-model";
 import Testimonials from "@/model/testimonials-mode";
@@ -62,11 +62,18 @@ async function getCourseById(id) {
     return replaceMongoIdInObject(course);
   } catch (error) {
     console.error(`Error fetching course with id ${id}:`, error);
-    // Depending on your application's needs, you can rethrow the error
-    // or return null/undefined
+
     throw new Error("Failed to retrieve course.");
   }
 }
 
-export { getCourseById, getCourses };
+async function getCoursesByInstructorId(instructorId) {
+  const courses = await Course.find({ instructor: instructorId }).lean();
+  return {
+    "courses": courses.length,
+  };
+}
+
+
+export { getCourseById, getCourses, getCoursesByInstructorId };
 

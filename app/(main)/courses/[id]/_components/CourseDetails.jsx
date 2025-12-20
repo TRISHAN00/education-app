@@ -20,7 +20,7 @@ export default function CourseDetails({ course }) {
             <img
               className="w-[40px] h-[40px] rounded-full"
               src={course.instructor.profilePicture}
-              alt="Trishan saha"
+              alt={course.title}
             />
             <p className="font-bold">
               {course.instructor.firstName + " " + course.instructor.lastName}

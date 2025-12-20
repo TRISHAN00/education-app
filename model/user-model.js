@@ -12,6 +12,10 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
+    designation: {
+      type: String,
+      required: false,
+    },
     status: {
       type: String,
       required: true,
