@@ -35,6 +35,6 @@ const lessonSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const Module = mongoose.models.Lesson || mongoose.model("Lesson", lessonSchema);
+const Lesson = mongoose.models.Lesson || mongoose.model("Lesson", lessonSchema);
 
-export default Module;
+export default Lesson;

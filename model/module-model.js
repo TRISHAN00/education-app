@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { Schema } from "mongoose";
 
 const moduleSchema = new mongoose.Schema(
   {
@@ -22,7 +22,7 @@ const moduleSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    lessonIds : [String]
+    lessonIds : [{type: Schema.ObjectId, ref: "Lesson"}]
   },
   { timestamps: true }
 );
