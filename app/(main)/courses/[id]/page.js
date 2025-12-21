@@ -1,5 +1,4 @@
 import { getCourseById } from "@/queries/course";
-import { getAllEnrollments } from "@/queries/enrollments";
 import CourseDetails from "./_components/CourseDetails";
 import CourseDetailsIntro from "./_components/CourseDetailsIntro";
 import RelatedCourses from "./_components/RelatedCourses";
@@ -49,8 +48,6 @@ const courses = [
 ];
 const SingleCoursePage = async ({ params: { id } }) => {
   const course = await getCourseById(id);
-  const enrollments = await getAllEnrollments();
-  console.log('enrollments', enrollments)
 
   return (
     <>

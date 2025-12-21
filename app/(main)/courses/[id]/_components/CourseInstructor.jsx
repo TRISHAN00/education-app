@@ -4,14 +4,14 @@ import { MessageSquare, Presentation, Star, UsersRound } from "lucide-react";
 
 export default async function CourseInstructor({ course }) {
   const instructor = replaceMongoIdInObject(course.instructor);
-  const totalCoursesByInstructor = await getCoursesByInstructorId(instructor?.id)
+  const instructorInformation = await getCoursesByInstructorId(instructor?.id)
 
   return (
     <div className="bg-gray-50 rounded-md p-8">
       <div className="md:flex md:gap-x-5 mb-8">
         <div className="h-[310px] w-[270px] max-w-full  flex-none rounded mb-5 md:mb-0">
           <img
-            src="https://avatars.githubusercontent.com/u/3633137?v=4"
+            src={instructor.profilePicture}
             alt=""
             className="w-full h-full object-cover rounded"
           />
@@ -27,19 +27,19 @@ export default async function CourseInstructor({ course }) {
             <ul className="list space-y-4">
               <li className="flex items-center space-x-3">
                 <Presentation className="text-gray-600" />
-                <div>{totalCoursesByInstructor.courses} Courses</div>
+                <div>{instructorInformation.courses} Courses</div>
               </li>
               <li className="flex space-x-3">
                 <UsersRound className="text-gray-600" />
-                <div>2k+ Student Learned</div>
+                <div>{instructorInformation.enrollments} Student Learned</div>
               </li>
               <li className="flex space-x-3">
                 <MessageSquare className="text-gray-600" />
-                <div>1500+ Reviews</div>
+                <div>{instructorInformation.reviews} Reviews</div>
               </li>
               <li className="flex space-x-3">
                 <Star className="text-gray-600" />
-                <div>4.9 Average Rating</div>
+                <div>{instructorInformation.ratings} Average Rating</div>
               </li>
             </ul>
           </div>

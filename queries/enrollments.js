@@ -6,5 +6,10 @@ async function getAllEnrollments() {
   return replaceMongoIdInArray(enrollments);
 }
 
-export { getAllEnrollments };
+async function getEnrollmentsByCourseId(courseId) {
+    const enrollments = await Enrollment.find({course_id: courseId}).lean();
+    return enrollments;
+}
+
+export { getAllEnrollments, getEnrollmentsByCourseId };
 

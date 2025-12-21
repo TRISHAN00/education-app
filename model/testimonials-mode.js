@@ -12,6 +12,7 @@ const testimonialsSchema = new mongoose.Schema(
     },
     courseId: {
       type: Schema.Types.ObjectId,
+      ref: "Course",
     },
     userId: {
       type: Schema.Types.ObjectId,
