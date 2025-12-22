@@ -1,7 +1,7 @@
 import {
-    AccordionContent,
-    AccordionItem,
-    AccordionTrigger,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Video } from "lucide-react";
 import CourseLessonList from "./CourseLessonList";
@@ -23,7 +23,6 @@ export default async function CourseModuleList({ module }) {
 
         <div className="space-y-3">
           {module.lessonIds.map((lessonId) => {
-            console.log(lessonId)
             return (
                 <CourseLessonList lessonId={lessonId} />
             )

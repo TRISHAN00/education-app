@@ -4,31 +4,45 @@ const { Schema } = mongoose;
 
 const userSchema = new Schema(
   {
-    title: {
+    firstName: {
       type: String,
       required: true,
     },
-    description: {
+    lastName: {
       type: String,
       required: true,
+    },
+    password: {
+      type: String,
+      required: true,
+    },
+    email: {
+      type: String,
+      required: true,
+    },
+    phone: {
+      type: String,
+      required: false,
+    },
+    role: {
+      type: String,
+      required: true,
+    },
+    bio: {
+      type: String,
+      required: false,
+    },
+    socialMedia: {
+      type: Object,
+      required: false,
+    },
+    profilePicture: {
+      type: String,
+      required: false,
     },
     designation: {
       type: String,
       required: false,
-    },
-    status: {
-      type: String,
-      required: true,
-    },
-    slug: {
-      type: String,
-      required: true,
-    },
-    course: {
-      required: Schema.Types.ObjectId,
-    },
-    lessonIds: {
-      required: [String],
     },
   },
   { timestamps: true }

@@ -3,7 +3,6 @@ import { getLesson } from "@/queries/lessons";
 import { Tv } from "lucide-react";
 export default async function CourseLessonList({ lessonId }) {
   const getLessons = await getLesson(lessonId);
-  console.log("lesson", getLessons);
   return (
     <button
       type="button"

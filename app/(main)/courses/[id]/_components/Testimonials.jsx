@@ -15,7 +15,7 @@ export default function Testimonials({ courses, testimonials }) {
         <SectionTitle className="mb-6">Testimonials</SectionTitle>
         <Carousel
           opts={{
-            align: "start", 
+            align: "start",
           }}
           className="max-2xl:w-[90%] w-full mx-auto"
         >
@@ -24,9 +24,9 @@ export default function Testimonials({ courses, testimonials }) {
           <CarouselContent className="py-4">
             {testimonials.map((testimonial) => {
               const fullName =
-                testimonial.userId.first_name +
+                testimonial.userId.firstName +
                 " " +
-                testimonial.userId.first_name;
+                testimonial.userId.lastName;
               return (
                 <CarouselItem
                   key={testimonial.id}
@@ -35,17 +35,23 @@ export default function Testimonials({ courses, testimonials }) {
                   <div className="sm:break-inside-avoid">
                     <blockquote className="rounded-lg bg-gray-50 p-6  sm:p-8 shadow-sm">
                       <div className="flex items-center gap-4">
-                        <img
-                          alt={fullName}
-                          src={testimonial.userId.profile_picture}
-                          width="56"
-                          height="56"
-                          className="size-14 rounded-full object-cover"
-                        />
+                        {testimonial.userId.profile_picture && (
+                          <img
+                            alt={fullName}
+                            src={testimonial.userId.profile_picture}
+                            width="56"
+                            height="56"
+                            className="size-14 rounded-full object-cover"
+                          />
+                        )}
+
                         <div>
-                          <p className="mt-0.5 text-lg font-medium text-gray-900">
-                            {fullName}
-                          </p>
+                          {fullName && (
+                            <p className="mt-0.5 text-lg font-medium text-gray-900">
+                              {fullName}
+                            </p>
+                          )}
+
                           <div className="flex justify-center gap-0.5 text-yellow-600">
                             <Star ratings={testimonial.rating} />
                           </div>
